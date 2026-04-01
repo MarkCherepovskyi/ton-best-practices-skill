@@ -1,29 +1,31 @@
 ---
 name: ton-best-practices
 description: |
-  Use when auditing, reviewing, writing, or testing TON smart contracts in Tolk.
+  Use when auditing, reviewing, writing, or testing TON smart contracts in FunC.
   Security vulnerabilities, async model pitfalls, bounce message handling,
-  gas management, access control, serialization, audit checklists.
-  Triggers: Tolk, TVM, TVM 12, TON contract, jetton, NFT TON, TON audit,
-  bounce message, smart contract security.
+  gas management, access control, serialization, and audit checklists.
+  Triggers: FunC, TVM, TON contract, jetton, NFT TON, TON audit,
+  bounce message, smart contract security, impure, recv_internal.
 ---
 
-# TON Smart Contract Best Practices (Tolk)
+# TON Smart Contract Best Practices (FunC)
 
 ## Overview
 
 TON uses an **asynchronous actor model**: one transaction changes state of **one account** processing **one message**. A single Ethereum tx can span thousands of TON txs across hundreds of blocks. This creates unique vulnerability classes absent from Solidity.
 
-**Language**: Tolk v1.2 -- compiles to TVM 12 bytecode. Modern syntax, explicit mutation, union types, lazy fields, built-in message construction APIs.
+**Language**: FunC -- compiles to Fift assembler then TVM bytecode. Low-level language with manual serialization, explicit `impure` annotations, and tilde/dot mutation conventions.
 
 **Based on**: 233 vulnerabilities from 34 audits (29 projects, 11 firms). Top findings: logical errors (70), auth (25), centralization (19).
 
 **Key reference files:**
+- `func-complete-reference.md` — complete FunC-focused best-practices reference (overview, vulnerabilities, patterns, tools)
+- `func-representation.md` — practical FunC model of secure message/state flow
+- `ton-tvm-security-concepts.md` — concise TON/TVM execution, fee, bounce, gas and replay threat model
+- `ton-smart-contract-audit-context.md` — AI-agent-ready audit context: source priorities, exit-code triage, workflow, evidence bundle
+- `security-audit-checklist-abstract.md` — contract-agnostic TON audit checklist for access, gas, bounce, and replay safety
 - `vulnerabilities.md` — Full vulnerability catalog with code examples
 - `audit-checklist.md` — Complete audit checklist
-- `tolk-security.md` — Tolk-specific language pitfalls
-- `tvm-async.md` — TVM internals, async model, bounce messages (Tolk 1.2 / TVM 12)
-- `tolk-best-practices.md` — Tolk language best practices
 
 ---
 

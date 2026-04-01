@@ -2,8 +2,8 @@
 
 A Claude Code skill for TON blockchain smart contract security auditing, development, and best practices.
 
-**Language**: Tolk v1.2 / TVM 12
-**Based on**: 233 vulnerabilities from 34 professional audits + full Tolk documentation + 42 production contracts from tolk-bench
+**Language**: FunC / TVM
+**Based on**: 233 vulnerabilities from 34 professional audits + TON/FunC documentation + real-world audited contract patterns
 
 ## Installation
 
@@ -15,24 +15,28 @@ npx skills add elsvv/ton-best-practices-skill
 
 | File | Contents |
 |------|----------|
-| `SKILL.md` | Entry point — Top 10 vulnerabilities, quick checklist, TON vs EVM comparison |
-| `tolk-security.md` | 30 Tolk-specific security pitfalls with vulnerable/correct code examples |
-| `tolk-best-practices.md` | 16-section Tolk language best practices from production contracts |
-| `vulnerabilities.md` | Full 233-vulnerability catalog with Tolk code examples |
+| `SKILL.md` | Entry point — FunC security quick reference and threat model links |
+| `func-complete-reference.md` | Complete FunC best-practices reference (vulnerabilities, patterns, checklist, tools) |
+| `func-representation.md` | Practical FunC representation of secure contract flow |
+| `vulnerabilities.md` | Full 233-vulnerability catalog with TON-specific examples |
 | `tvm-async.md` | TVM internals, async model, BounceMode guide (Tolk 1.2 / TVM 12) |
+| `ton-tvm-security-concepts.md` | TON/TVM threat-model primer: phases, fees, bounces, OOG, replay, limits |
+| `ton-smart-contract-audit-context.md` | AI-agent-ready TON audit context (phases, exits, workflow, evidence artifacts) |
+| `security-audit-checklist-abstract.md` | Contract-agnostic TON audit checklist (auth, parsing, gas, bounce, replay) |
 | `audit-checklist.md` | 11-phase professional audit checklist (Phase 0 = Tolk config) |
 
 ## Key topics
 
-- **Top 10 vulnerabilities**: auth checks, integer overflow, async reentrancy, lazy loading bypass, union type dispatch, message modes, deserialization, null assertions, bounce handling, gas exhaustion
-- **Tolk 1.2 features**: `BounceMode.RichBounce` (full bounce body recovery), `address` internal-only validation, borrow checker
+- **Top 10 vulnerabilities**: auth checks, integer safety, async race/desync, message mode misuse, deserialization bugs, bounce recovery gaps, gas exhaustion
+- **FunC-specific pitfalls**: missing `impure`, `~` vs `.`, boolean `-1`, load/store width mismatches
 - **Async model**: carry-value pattern, bounce handlers, multi-message race conditions
-- **Access control**: nullable admin patterns, two-step ownership transfer, workchain validation
+- **Contract structures**: jetton master/wallet split, deterministic wallet derivation, transfer flow validation
+- **Access control**: admin patterns, ownership transfer, workchain validation
 - **Gas management**: fee estimation, reserve patterns, out-of-gas handling
 
 ## Trigger keywords
 
-`Tolk`, `TVM`, `TVM 12`, `TON contract`, `jetton`, `NFT TON`, `TON audit`, `bounce message`, `smart contract security`, `TON blockchain`
+`FunC`, `TVM`, `TON contract`, `jetton`, `NFT TON`, `TON audit`, `bounce message`, `smart contract security`, `impure`, `recv_internal`
 
 ## Sources
 
